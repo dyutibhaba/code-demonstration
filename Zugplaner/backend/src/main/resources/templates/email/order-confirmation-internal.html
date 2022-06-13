@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Email</title>
+</head>
+<body>
+<div>Hello,<br/>
+
+  <p>A new order has been place using webshop with below details</p><br/>
+  <p>
+    <b>Username:</b> <span th:text="${user.displayedName}"/><br/>
+    <b>User email:</b> <span th:text="${user.email}"/><br/>
+    <b>Customer name:</b> <span th:text="${orderDto.customerName}"/></p>
+
+  <table border="1" style="width:100%">
+    <tr>
+      <th>Thales Snr</th>
+      <th>Anzahl</th>
+      <th>Gesamtpreis</th>
+    </tr>
+    <tr th:each="orderLine: ${orderDto.orderLines}">
+      <td th:text="${orderLine.productArticleWithPrice.thalesNr}">3JA 15536 DAAA</td>
+      <td th:text="${orderLine.articleQuantity}">1</td>
+      <td>
+        <span th:text="${orderLine.productArticleWithPrice.pricePerArticle != null} ? ${orderLine.articleTotalPrice + ' ' + 'Euros'} : 'To be confirmed'">someValue</span>
+      </td>
+    </tr>
+  </table><br/>
+  <p><b>Total Price:</b>&nbsp;<span th:text="${orderDto.totalPrice + ' ' +'Euros'}"/></p>
+
+  <p>Kind regards<br/>Your Webshop Team</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Maintenance Layout renders the maintenance checklist layout correctly 1`] = `
+Array [
+  <div
+    className="sc-bBXqnf cKDpGo"
+  >
+    <div
+      className="sc-fodVxV BISWi"
+    >
+      <div
+        className="left"
+      >
+        SideNavigation
+        <img
+          alt="Protostellar globe"
+          className="sc-kEjbxe qRbSs"
+          src="ProtostellarGlobe.svg"
+        />
+        <span
+          className="sc-iqHYGH fOGDer"
+        >
+          <a
+            className="sc-bqyKva hDtbLJ"
+            href="/track-and-predict"
+            onClick={[Function]}
+          >
+            <span
+              className="link"
+            >
+              Track&Predict
+            </span>
+          </a>
+        </span>
+      </div>
+      <nav
+        className="sc-fFubgz deccwI"
+      >
+        <div
+          className="sc-kstrdz lolpkk tpz-header white"
+        >
+          <a
+            className="sc-hBEYos iRgagf"
+            onClick={[Function]}
+          >
+            navbar.documentation
+          </a>
+          <a
+            className="sc-hBEYos iRgagf"
+            href="mailto:support-1logistics@thalesdigital.io"
+          >
+            <i
+              className="material-icons"
+            >
+              help_outline
+            </i>
+          </a>
+          <a
+            className="sc-hBEYos iRgagf"
+          >
+            <div
+              className="tpz-menu-options tpz-header-mobile-menu-options"
+            >
+              <div
+                className="tpz-menu"
+              >
+                <button
+                  className="tpz-menu-button"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  type="button"
+                >
+                  <i
+                    className="material-icons"
+                  >
+                    account_circle
+                  </i>
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>,
+  <div
+    className="sc-iwyYcG kkPWSB"
+  >
+    <div
+      className="sc-cxFLnm eaKehO"
+    >
+      <nav
+        className="sc-pFZIQ iOsina"
+      >
+        <a
+          className="sc-fubCfw sc-jrAGrp YVgyN hwvkzP  active-nav-item  "
+          href="/link/to"
+          onClick={[Function]}
+        >
+          maintenance.tabs.checklists
+        </a>
+      </nav>
+      Children
+    </div>
+    <div
+      className="sc-lmoMRL ktQhwL"
+    >
+      <div
+        className="sc-iBPRYJ ulSNt"
+      >
+        <div
+          className="sc-bdfBwQ bQlKor"
+        >
+          <div
+            className="sc-gsTCUz gSBHTq"
+          >
+            <div
+              className="sc-dlfnbm jFixhj"
+            >
+              <img
+                alt="protostellar-logo"
+                height="32px"
+                src="Protostellar_Logo_grau_2-02.svg"
+              />
+            </div>
+            <div
+              className="sc-hKgILt edhEfs"
+            >
+              <ul
+                className="sc-eCssSg cUiBZU"
+              >
+                <li
+                  className="sc-jSgupP fsVOKa"
+                >
+                  <a
+                    className="sc-gKsewC hFWEic"
+                    onClick={[Function]}
+                  >
+                    footer.notice
+                  </a>
+                </li>
+                <li
+                  className="sc-jSgupP fsVOKa"
+                >
+                  Protostellar
+                   
+                  0.0.1
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

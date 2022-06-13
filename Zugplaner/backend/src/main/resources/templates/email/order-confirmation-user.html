@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Email</title>
+</head>
+<body>
+<div>Dear <span th:text="${user.displayedName}"></span>,<br/>
+
+  <p>Thank you for using Thales Transportation Webshop. You will receive the final order confirmation soon.</p>
+
+  <p>For any further question, do not hesitate to contact us.<br/><span style="color:blue;"><u>DE-Rail.webshop@thalesgroup.com</u></span>.</p><br/>
+
+  <p>Kind regards<br/>Your Webshop Team</p>
+</div>
+</body>
+</html>

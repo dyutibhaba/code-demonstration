@@ -1,0 +1,164 @@
+spring:
+  liquibase:
+    liquibaseSchema: "public"
+    enabled: ${LIQUIBASE_ENABLED}
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/1logistics-db
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # We use dynamic key resolving via JWKS in order to support key rotation
+          jwk-set-uri: ${SECURITY_OAUTH2_SERVER_URI:http://localhost:8899}/auth/realms/${KEYCLOAK_REALM:Protostellar}/protocol/openid-connect/certs
+          issuer-uri: ${SECURITY_OAUTH2_SERVER_URI:http://localhost:8899}/auth/realms/${KEYCLOAK_REALM:Protostellar}
+keycloak:
+  clientId: backend
+
+jobs:
+  cronSchedule: ${CRON_JOB}
+  alarmCronSchedule: ${CRON_JOB_ALARM}
+
+nanonet:
+  api-key: ${NANONET_API_KEY}
+  model-id: ${NANONET_MODEL_ID}
+openalpr:
+  secret-key: ${OPENALPR_SECRET_KEY}
+  api-url: ${OPENALPR_API_URL}
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+      jdbc:
+        core: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+
+decorator:
+  datasource:
+    datasource-proxy:
+      logging: slf4j
+      query.enable-logging: true
+      query.log-level: debug
+      slow-query.enable-logging: true
+      slow-query.log-level: warn
+      slow-query.threshold: 300
+      multiline: true
+      json-format: false
+      count-query: false
+---
+
+spring:
+  profiles: log-db-queries
+
+decorator:
+  datasource:
+    datasource-proxy:
+      query:
+        log-level: info
+---
+
+spring:
+  profiles: ut,it,azure-qualif,windows
+  datasource:
+    url: jdbc:postgresql://postgres:5432/1logistics-db
+    username: postgres
+    password: root
+
+---
+spring:
+  profiles: local-e2e,local-integration-tests
+
+---
+spring:
+  profiles: e2e,integration-tests
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:1logistics-db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:root}
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT:5432}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+---
+
+azure:
+  activedirectory:
+    tenant-id: ${AZURE_TENANT_ID}
+    client-id: ${AZURE_CLIENT_ID}
+    client-secret: ${BACKEND_CLIENT_SECRET}
+    session-stateless: false
+    user-group:
+      allowed-groups: PRTS_ADMIN, PRTS_USER, Users
+    app-id-uri: api://${AZURE_CLIENT_ID}
+    authorization-clients:
+      graph:
+        scopes:
+          - https://graph.microsoft.com/User.Read
+
+
+azure.application-insights.instrumentation-key: ${APP_INSIGHTS_KEY:#{""}}
+azure.application-insights.enabled: ${AI_ENABLED:false}
+spring.application.name: "1logistics-backend"
+
+app:
+  user-guide-filename: ${USER_GUIDE_FILENAME}
+  information-notice-filename: ${INFORMATION_NOTICE_FILENAME}
+  origin: ${ORIGIN}
+  pointer-password: ${POINTER_PASSWORD}
+  user-group-id: ${USER_GROUP_ID}
+  url-front: ${URL_FRONT:http://localhost:3000}
+  domain: ${DOMAIN:thalesdigital.io}
+
+front:
+  url: ${FRONT_URL}
+
+ms:
+  graph:
+    invitationMessage: ${INVITATION_MESSAGE:"Join Protostellar"}
+    user_already_in_group_message: ${USER_ALREADY_IN_GROUP:"User already in group"}
+    send_invitation_by_email: ${SEND_INVITATION_BY_MAIL:true}
+    scope: ${MS_SCOPE:https://graph.microsoft.com/.default}
+
+webshop:
+  mail:
+    internal: DE-Rail.webshop@thalesgroup.com
+    username: Thalestransport.webshop@protostellar.eu
+    password: 2a-PPk$stuM5
+    smtp:
+      host: smtp.strato.de
+      port: 465
+      auth: true
+      socketFactoryClass: javax.net.ssl.SSLSocketFactory

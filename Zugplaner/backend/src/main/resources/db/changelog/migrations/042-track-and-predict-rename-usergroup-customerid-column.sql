@@ -1,0 +1,1 @@
+ALTER TABLE track_predict."UserGroup" RENAME COLUMN "CustomerId" TO "CustomerID";

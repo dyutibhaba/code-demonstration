@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/migrations/init-protostellar.sql
+  - include:
+      file: db/changelog/migrations/db.changelog-000-to-017.yaml
+  - include:
+      file: db/changelog/migrations/it/018-it-tests.sql
+  - include:
+      file: db/changelog/migrations/db.changelog-019-onward.yaml
+  - include:
+      file: db/changelog/migrations/it/db.changelog-it.yaml

@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/migrations/db.changelog-000-to-017.yaml
+  - include:
+      file: db/changelog/migrations/db.changelog-019-onward.yaml
